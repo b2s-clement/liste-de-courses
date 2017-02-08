@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Liste de courses</string>
+    <string name="homeTxt">Application de gestion des listes de courses</string>
+    <string name="btnMag">Magasins</string>
+    <string name="btnProd">Produits</string>
+    <string name="btnList">Listes</string>
+    <string name="btnExit">Fermer</string>
+    <string name="title_activity_magasins">Magasins</string>
+</resources>
