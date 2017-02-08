@@ -12,6 +12,9 @@ public class Magasin {
     private String nom,ville,pays,type;
 
     private static ArrayList<Magasin> listMag = new ArrayList<Magasin>();
+    
+
+
 
     public Magasin(int num, String nom,String ville,String pays,String type) {
         this.num = num;

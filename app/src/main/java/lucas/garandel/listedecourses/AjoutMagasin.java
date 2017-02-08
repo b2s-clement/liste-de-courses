@@ -24,11 +24,15 @@ public class AjoutMagasin extends AppCompatActivity {
         valid = (Button)findViewById(R.id.addMagValid);
         cancel = (Button)findViewById(R.id.addMagCancel);
 
+
         Intent intent = getIntent();
-        String transmittedValue = intent.getStringExtra(Magasins.OLD_NOM_MAGASIN);
-        if(!transmittedValue.isEmpty()){
-            name.setText(transmittedValue);
+        if (intent.getIntExtra("requestCode", 0)==Magasins.REQUEST_CODE_EDIT) {
+            String transmittedValue = intent.getStringExtra(Magasins.OLD_NOM_MAGASIN);
+            if(!transmittedValue.isEmpty()){
+                name.setText(transmittedValue);
+            }
         }
+
 
 
         valid.setOnClickListener(new View.OnClickListener() {

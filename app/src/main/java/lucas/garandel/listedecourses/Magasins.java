@@ -32,6 +32,7 @@ public class Magasins extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent addMag = new Intent(Magasins.this, AjoutMagasin.class);
+                addMag.putExtra("requestCode", REQUEST_CODE_ADD);
                 startActivityForResult(addMag, REQUEST_CODE_ADD);
             }
         });
@@ -43,6 +44,7 @@ public class Magasins extends AppCompatActivity {
                 Intent editMag = new Intent(Magasins.this, AjoutMagasin.class);
                 String old = (String)parent.getItemAtPosition(position);
                 editMag.putExtra(OLD_NOM_MAGASIN,old);
+                editMag.putExtra("requestCode",REQUEST_CODE_EDIT);
                 startActivityForResult(editMag, REQUEST_CODE_EDIT);
             }
         });
