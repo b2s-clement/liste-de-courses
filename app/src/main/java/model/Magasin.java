@@ -12,8 +12,8 @@ public class Magasin {
     private String nom,ville,pays,type;
 
     private static ArrayList<Magasin> listMag = new ArrayList<Magasin>();
-    
-
+    public static Magasin mag1 = new Magasin(1,"Ici","Caen","France","Grande surface");
+    public static Magasin mag2 = new Magasin(1,"Là-bas","Bruxelles","Belgique","Friterie");
 
 
     public Magasin(int num, String nom,String ville,String pays,String type) {
@@ -39,5 +39,12 @@ public class Magasin {
 
     public static ArrayList<Magasin> getData(){
         return listMag;
+    }
+
+    public String getVille(){
+        return ville;
+    }
+    public String getPays(){
+        return pays;
     }
 }

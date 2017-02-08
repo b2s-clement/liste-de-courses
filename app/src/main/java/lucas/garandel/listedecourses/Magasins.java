@@ -11,6 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import adapter.MagasinAdapter;
+import model.Magasin;
+
 public class Magasins extends AppCompatActivity {
 
     public static final int REQUEST_CODE_ADD = 123;
@@ -48,6 +53,12 @@ public class Magasins extends AppCompatActivity {
                 startActivityForResult(editMag, REQUEST_CODE_EDIT);
             }
         });
+        // Construct the data source
+        ArrayList<Magasin> arrayOfMags = Magasin.getData();
+        // Create the adapter to convert the array to views
+        MagasinAdapter adapter = new MagasinAdapter(this, arrayOfMags);
+        // Attach the adapter to a ListView
+        liste.setAdapter(adapter);
 
 
 
