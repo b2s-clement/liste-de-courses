@@ -9,13 +9,16 @@ import java.util.ArrayList;
 public class Magasin {
 
     private int num;
-    private String nom;
+    private String nom,ville,pays,type;
 
     private static ArrayList<Magasin> listMag = new ArrayList<Magasin>();
 
-    public Magasin(int num, String nom) {
+    public Magasin(int num, String nom,String ville,String pays,String type) {
         this.num = num;
         this.nom = nom;
+        this.ville=ville;
+        this.pays=pays;
+        this.type=type;
         Magasin.listMag.add(this);
     }
 
