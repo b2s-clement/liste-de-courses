@@ -2,6 +2,7 @@ package lucas.garandel.listedecourses;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import adapter.MagasinAdapter;
+import adapter.MagasinLongAdapter;
 import model.Magasin;
 
 public class Magasins extends AppCompatActivity {
@@ -22,6 +24,9 @@ public class Magasins extends AppCompatActivity {
     public static final int REQUEST_CODE_EDIT = 111;
     public static final String NOM_MAGASIN = "REPONSE";
     public static final String OLD_NOM_MAGASIN = "OLD";   // QUESTION : LA VALEUR EST ELLE IMPORTANTE ???
+
+    // Définition statique des adapters (pour les faire varier)
+
 
     ListView liste;
 
@@ -43,6 +48,10 @@ public class Magasins extends AppCompatActivity {
         });
 
         liste = (ListView)findViewById(R.id.listMag);
+        /*
+            Action au click simple sur un item :
+         */
+
         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,9 +66,21 @@ public class Magasins extends AppCompatActivity {
         ArrayList<Magasin> arrayOfMags = Magasin.getData();
         // Create the adapter to convert the array to views
         MagasinAdapter adapter = new MagasinAdapter(this, arrayOfMags);
+        final MagasinLongAdapter longAdapter = new MagasinLongAdapter(this, arrayOfMags);
         // Attach the adapter to a ListView
         liste.setAdapter(adapter);
 
+        /*
+            Action au click long sur un item :
+         */
+        liste.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                liste.setAdapter(longAdapter);
+                return true;
+            }
+        });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -10,6 +10,7 @@ public class Magasin {
 
     private int num;
     private String nom,ville,pays,type;
+    private boolean checked;
 
     private static ArrayList<Magasin> listMag = new ArrayList<Magasin>();
     public static Magasin mag1 = new Magasin(1,"Ici","Caen","France","Grande surface");
@@ -22,6 +23,7 @@ public class Magasin {
         this.ville=ville;
         this.pays=pays;
         this.type=type;
+        this.checked = false;
         Magasin.listMag.add(this);
     }
 
@@ -46,5 +48,12 @@ public class Magasin {
     }
     public String getPays(){
         return pays;
+    }
+
+    public boolean getChecked(){
+        return checked;
+    }
+    public void setChecked(boolean val){
+        checked=val;
     }
 }
