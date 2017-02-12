@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import model.Magasin;
+
 public class Accueil extends AppCompatActivity {
 
     Button bExit,bMag,bProd,bList;
@@ -15,6 +17,10 @@ public class Accueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
+        //RESET DES SELECTIONS DANS LES DIFFERENTES ACTIVITES
+        Magasin.resetSelection();
+
+        //INITIALISATION DES COMPOSANTS DE l'ACTIVITE
         bExit = (Button)findViewById(R.id.exitbtn);
         bMag = (Button)findViewById(R.id.magbtn);
         bProd = (Button)findViewById(R.id.prodbtn);

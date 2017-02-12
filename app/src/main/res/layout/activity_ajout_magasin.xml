@@ -10,40 +10,79 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="lucas.garandel.listedecourses.AjoutMagasin">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/addMagTxt"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp"
-        android:id="@+id/addMagField" />
-
-    <TextView
-        android:text="Nom du magasin :"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addMagTxt"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
-
     <Button
         android:text="Valider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
         android:id="@+id/addMagValid"
-        android:layout_below="@+id/addMagField"
-        android:layout_toEndOf="@+id/addMagTxt"
-        android:layout_marginStart="50dp" />
+        android:layout_alignBaseline="@+id/addMagCancel"
+        android:layout_alignBottom="@+id/addMagCancel"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Annuler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addMagCancel"
-        android:layout_alignTop="@+id/addMagValid"
+        android:layout_marginBottom="28dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Nom du magasin :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addMagTxt"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        android:id="@+id/addMagField"
+        android:layout_below="@+id/addMagTxt"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Ville : "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addMagField"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/textView2"
+        android:layout_alignEnd="@+id/addMagTxt" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="11dp"
+        android:id="@+id/addMagVille"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Pays :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addMagVille"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/textView3"
+        android:layout_alignEnd="@+id/textView2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/addMagPays"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -34,11 +34,7 @@ public class MagasinLongAdapter extends ArrayAdapter<Magasin> {
         // A RETCHEQUER POUR LE CHANGEMENT DE COULEUR
 
         if (convertView == null) {
-            if(!mag.getChecked()) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.magasin_select_items, parent, false);
-            }else {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.magasin_select_items_checked, parent, false);
-            }
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.magasin_select_items, parent, false);
         }
         // Lookup view for data population
         TextView nomMag = (TextView) convertView.findViewById(R.id.nomMag);
