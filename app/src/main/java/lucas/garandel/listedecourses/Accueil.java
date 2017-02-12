@@ -17,9 +17,6 @@ public class Accueil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
-        //RESET DES SELECTIONS DANS LES DIFFERENTES ACTIVITES
-        Magasin.resetSelection();
-
         //INITIALISATION DES COMPOSANTS DE l'ACTIVITE
         bExit = (Button)findViewById(R.id.exitbtn);
         bMag = (Button)findViewById(R.id.magbtn);

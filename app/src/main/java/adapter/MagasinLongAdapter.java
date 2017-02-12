@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +32,6 @@ public class MagasinLongAdapter extends ArrayAdapter<Magasin> {
         // Check if an existing view is being reused, otherwise inflate the view
 
 
-        // A RETCHEQUER POUR LE CHANGEMENT DE COULEUR
-
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.magasin_select_items, parent, false);
         }
@@ -49,13 +48,54 @@ public class MagasinLongAdapter extends ArrayAdapter<Magasin> {
         selected.setChecked(mag.getChecked());
 
         final View finalConvertView = convertView;
+
+        // A RETCHEQUER POUR LE CHANGEMENT DE COULEUR
+
+        View coloriage = (View) finalConvertView.findViewById(R.id.rowMagList);
+        if(mag.getChecked()){
+            //ON COLORIE
+            coloriage.setBackgroundColor(Color.CYAN);
+        }else{
+            //ON GOMME LE COLORIAGE
+            coloriage.setBackgroundColor(Color.TRANSPARENT);
+        }
+        //-----------------------------------
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mag.setChecked(!mag.getChecked());
                 CheckBox test = (CheckBox) finalConvertView.findViewById(R.id.checkBox);
                 test.setChecked(mag.getChecked());
+                View coloriage = (View) finalConvertView.findViewById(R.id.rowMagList);
+                if(mag.getChecked()){
+                    //ON COLORIE
+                    coloriage.setBackgroundColor(Color.CYAN);
+                }else{
+                    //ON GOMME LE COLORIAGE
+                    coloriage.setBackgroundColor(Color.TRANSPARENT);
+                }
             }
+        });
+        CheckBox checkBox = (CheckBox) finalConvertView.findViewById(R.id.checkBox);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mag.setChecked(!mag.getChecked());
+                CheckBox test = (CheckBox) finalConvertView.findViewById(R.id.checkBox);
+                test.setChecked(mag.getChecked());
+                View coloriage = (View) finalConvertView.findViewById(R.id.rowMagList);
+                if(mag.getChecked()){
+                    //ON COLORIE
+                    coloriage.setBackgroundColor(Color.CYAN);
+                }else{
+                    //ON GOMME LE COLORIAGE
+                    coloriage.setBackgroundColor(Color.TRANSPARENT);
+                }
+            }
+
+
+
         });
 
         // Return the completed view to render on screen
