@@ -42,7 +42,7 @@ public class Accueil extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(Accueil.this, Produits.class));
             }
         });
 

@@ -6,4 +6,6 @@
     <string name="btnList">Listes</string>
     <string name="btnExit">Fermer</string>
     <string name="title_activity_magasins">Magasins</string>
+    <string name="title_activity_produit">produit</string>
+    <string name="title_activity_produits">Produits</string>
 </resources>
