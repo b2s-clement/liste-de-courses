@@ -86,7 +86,7 @@ public class Nav extends AppCompatActivity
         } else if (id == R.id.nav_produits) {
             //startActivity(new Intent(Nav.this,Produits.class));
         } else if (id == R.id.nav_listes) {
-            //startActivity(new Intent(Nav.this,Listes.class)); test 2 git
+            //startActivity(new Intent(Nav.this,Listes.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
