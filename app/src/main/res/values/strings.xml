@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Liste de courses</string>
-    <string name="homeTxt">Application de gestion des listes de courses</string>
-    <string name="btnMag">Magasins</string>
-    <string name="btnProd">Produits</string>
-    <string name="btnList">Listes</string>
-    <string name="btnExit">Fermer</string>
     <string name="title_activity_magasins">Magasins</string>
-    <string name="title_activity_produit">produit</string>
     <string name="title_activity_produits">Produits</string>
     <string name="title_activity_listes">Listes</string>
+    <string name="title_activity_nav">Nav</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
