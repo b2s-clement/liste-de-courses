@@ -34,6 +34,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lucas.garandel.listedecourses.Accueil" />
         </activity>
+        <activity
+            android:name=".Listes"
+            android:label="@string/title_activity_listes"
+            android:parentActivityName=".Accueil"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="lucas.garandel.listedecourses.Accueil" />
+        </activity>
     </application>
 
 </manifest>
