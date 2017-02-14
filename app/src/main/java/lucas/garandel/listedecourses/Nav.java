@@ -42,26 +42,8 @@ public class Nav extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                //On va spécifier l'action du fab en fonction du fragment chargé:
-                /*switch(selectedFragmentId){
-                    case 0:
-
-                        Intent addMag = new Intent(Nav.this, AjoutMagasin.class);
-                        addMag.putExtra("requestCode", Magasins.REQUEST_CODE_ADD);
-                        startActivityForResult(addMag, Magasins.REQUEST_CODE_ADD);
-
-                        return;
-
-                    case 1:
-                        //NOTHING YET
-                        return;
-                    case 2:
-                        //NOTHING YET
-                        return;
-                    default:
-                        //NADA
-                        return;
-                }*/
+                Snackbar.make(findViewById(R.id.content_nav), "COUCOU MDRRRRR", Snackbar.LENGTH_LONG)
+                       .setAction("Action", null).show();
 
             }
         });
