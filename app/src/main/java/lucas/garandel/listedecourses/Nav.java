@@ -1,5 +1,8 @@
 package lucas.garandel.listedecourses;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +19,9 @@ import android.view.MenuItem;
 
 public class Nav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    //Initialisation du FragmentManager
+    public FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +87,24 @@ public class Nav extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        //On instancie le FragmentManager
+        fragmentManager = getFragmentManager();
+
+        //On va commencer la transaction vers le fragment souhaité :
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
         if (id == R.id.nav_magasins) {
             startActivity(new Intent(Nav.this,Magasins.class));
         } else if (id == R.id.nav_produits) {
-            //startActivity(new Intent(Nav.this,Produits.class));
+            Produits frag =  new Produits();
+            fragmentTransaction.add(R.id.content_nav,frag);
         } else if (id == R.id.nav_listes) {
-            //startActivity(new Intent(Nav.this,Listes.class)); ouyounamare jpp de git mdrrrrrrr
+            //startActivity(new Intent(Nav.this,Listes.class));
         }
+
+        //On commit la transaction :
+        fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

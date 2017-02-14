@@ -8,6 +8,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/frag_produit" />
+
+    <TextView
+        android:text="Fragment Produits !"
+        android:layout_width="match_parent"
+        android:layout_height="113dp"
+        android:id="@+id/textView6"
+        android:textAlignment="center"
+        android:elevation="0dp"
+        android:paddingTop="50dp" />
 
 </FrameLayout>

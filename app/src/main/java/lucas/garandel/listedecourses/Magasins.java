@@ -44,11 +44,11 @@ public class Magasins extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent addMag = new Intent(Magasins.this, AjoutMagasin.class);
-               // addMag.putExtra("requestCode", REQUEST_CODE_ADD);
-               // startActivityForResult(addMag, REQUEST_CODE_ADD);
-                Snackbar.make(findViewById(R.id.activity_magasin), "nb : "+Magasin.nbChecked(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent addMag = new Intent(Magasins.this, AjoutMagasin.class);
+                addMag.putExtra("requestCode", REQUEST_CODE_ADD);
+                startActivityForResult(addMag, REQUEST_CODE_ADD);
+                //Snackbar.make(findViewById(R.id.activity_magasin), "nb : "+Magasin.nbChecked(), Snackbar.LENGTH_LONG)
+                 //       .setAction("Action", null).show();
             }
         });
 
