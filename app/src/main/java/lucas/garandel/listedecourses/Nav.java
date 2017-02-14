@@ -1,5 +1,6 @@
 package lucas.garandel.listedecourses;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,8 +18,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import adapter.MagasinAdapter;
+import adapter.MagasinLongAdapter;
+import model.Magasin;
+
 public class Nav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static int selectedFragmentId;
 
     //Initialisation du FragmentManager
     public FragmentManager fragmentManager;
@@ -34,8 +41,28 @@ public class Nav extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                //On va spécifier l'action du fab en fonction du fragment chargé:
+                /*switch(selectedFragmentId){
+                    case 0:
+
+                        Intent addMag = new Intent(Nav.this, AjoutMagasin.class);
+                        addMag.putExtra("requestCode", Magasins.REQUEST_CODE_ADD);
+                        startActivityForResult(addMag, Magasins.REQUEST_CODE_ADD);
+
+                        return;
+
+                    case 1:
+                        //NOTHING YET
+                        return;
+                    case 2:
+                        //NOTHING YET
+                        return;
+                    default:
+                        //NADA
+                        return;
+                }*/
+
             }
         });
 
@@ -54,9 +81,10 @@ public class Nav extends AppCompatActivity
         Listes frag =  new Listes();
         fragmentTransaction.replace(R.id.content_nav,frag);
         getSupportActionBar().setTitle("Listes");
-
+        fragmentTransaction.commit();
         //On veut que l'item Listes soit sélectionné par défaut dans le menu
         navigationView.getMenu().getItem(2).setChecked(true);
+        selectedFragmentId = 2;
     }
 
     @Override
@@ -96,16 +124,18 @@ public class Nav extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        //On instancie le FragmentManager
-        //fragmentManager = getFragmentManager();
+        //On stocke l'id de l'item en static pour permettre de spécifier l'action du fab
+        selectedFragmentId=id;
 
         //On va commencer la transaction vers le fragment souhaité :
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
 
         if (id == R.id.nav_magasins) {
-            startActivity(new Intent(Nav.this,Magasins.class));
+            Magasins frag =  new Magasins();
+            fragmentTransaction.replace(R.id.content_nav,frag);
+
+            getSupportActionBar().setTitle("Magasins");
         } else if (id == R.id.nav_produits) {
             Produits frag =  new Produits();
             fragmentTransaction.replace(R.id.content_nav,frag);
@@ -127,4 +157,6 @@ public class Nav extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

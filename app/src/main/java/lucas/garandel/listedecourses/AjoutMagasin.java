@@ -27,7 +27,7 @@ public class AjoutMagasin extends AppCompatActivity {
         }catch(Exception e){
 
         }
-/*
+
 
         name = (EditText)findViewById(R.id.addMagField);
         ville = (EditText)findViewById(R.id.addMagVille);
@@ -97,6 +97,6 @@ public class AjoutMagasin extends AppCompatActivity {
                 finish();
             }
         });
-*/
+
     }
 }
