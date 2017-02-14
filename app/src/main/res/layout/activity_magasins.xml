@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_magasins"
+    <include layout="@layout/fragment_magasins"
         android:id="@+id/activity_magasin" />
 
     <android.support.design.widget.FloatingActionButton

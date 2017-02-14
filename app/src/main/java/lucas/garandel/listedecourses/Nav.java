@@ -47,6 +47,16 @@ public class Nav extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //A l'initialisation, on souhaite afficher le fragment Listes
+        fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Listes frag =  new Listes();
+        fragmentTransaction.replace(R.id.content_nav,frag);
+        getSupportActionBar().setTitle("Listes");
+
+        //On veut que l'item Listes soit sélectionné par défaut dans le menu
+        navigationView.getMenu().getItem(2).setChecked(true);
     }
 
     @Override
@@ -88,7 +98,7 @@ public class Nav extends AppCompatActivity
         int id = item.getItemId();
 
         //On instancie le FragmentManager
-        fragmentManager = getFragmentManager();
+        //fragmentManager = getFragmentManager();
 
         //On va commencer la transaction vers le fragment souhaité :
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -98,9 +108,16 @@ public class Nav extends AppCompatActivity
             startActivity(new Intent(Nav.this,Magasins.class));
         } else if (id == R.id.nav_produits) {
             Produits frag =  new Produits();
-            fragmentTransaction.add(R.id.content_nav,frag);
+            fragmentTransaction.replace(R.id.content_nav,frag);
+
+            getSupportActionBar().setTitle("Produits");
+
         } else if (id == R.id.nav_listes) {
-            //startActivity(new Intent(Nav.this,Listes.class));
+            Listes frag =  new Listes();
+            fragmentTransaction.replace(R.id.content_nav,frag);
+
+            getSupportActionBar().setTitle("Listes");
+
         }
 
         //On commit la transaction :
