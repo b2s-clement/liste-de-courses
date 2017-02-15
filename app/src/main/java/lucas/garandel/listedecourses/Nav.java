@@ -1,10 +1,11 @@
 package lucas.garandel.listedecourses;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
+
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,12 +19,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import adapter.MagasinAdapter;
-import adapter.MagasinLongAdapter;
-import model.Magasin;
+import java.util.ArrayList;
+
 
 public class Nav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static Magasins frag1 =  new Magasins();
+    private static Produits frag2 =  new Produits();
+    private static Listes frag3 =  new Listes();
+    private static Fragment[] listFrag ={frag1,frag2,frag3};
+    private static String[] labelFrag = {"Magasins","Produits","Listes"};
+    SharedPreferences pref;
 
     private static int selectedFragmentId;
 
@@ -37,12 +44,19 @@ public class Nav extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // GESTION DES PREFERENCES (pour afficher le bon fragment)
+        pref = getPreferences(0);
+        pref = getSharedPreferences("FRAGMENT",0);
+
+        selectedFragmentId = pref.getInt("FRAGMENT",2);
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Snackbar.make(findViewById(R.id.content_nav), "COUCOU MDRRRRR", Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(R.id.content_nav), "Essai", Snackbar.LENGTH_LONG)
                        .setAction("Action", null).show();
 
             }
@@ -57,16 +71,15 @@ public class Nav extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //A l'initialisation, on souhaite afficher le fragment Listes
+        //A l'initialisation, on souhaite afficher le fragment stocké en préférence
         fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Listes frag =  new Listes();
-        fragmentTransaction.replace(R.id.content_nav,frag);
-        getSupportActionBar().setTitle("Listes");
+        fragmentTransaction.replace(R.id.content_nav,listFrag[selectedFragmentId]);
+        getSupportActionBar().setTitle(labelFrag[selectedFragmentId]);
         fragmentTransaction.commit();
         //On veut que l'item Listes soit sélectionné par défaut dans le menu
-        navigationView.getMenu().getItem(2).setChecked(true);
-        selectedFragmentId = 2;
+        navigationView.getMenu().getItem(selectedFragmentId).setChecked(true);
+
     }
 
     @Override
@@ -106,7 +119,7 @@ public class Nav extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        //On stocke l'id de l'item en static pour permettre de spécifier l'action du fab
+        //On stocke l'id de l'item en static pour permettre de spécifier l'action du f ab
         selectedFragmentId=id;
 
         //On va commencer la transaction vers le fragment souhaité :
@@ -116,19 +129,22 @@ public class Nav extends AppCompatActivity
         if (id == R.id.nav_magasins) {
             Magasins frag =  new Magasins();
             fragmentTransaction.replace(R.id.content_nav,frag);
-
             getSupportActionBar().setTitle("Magasins");
+
+            pref.edit().clear().remove("FRAGMENT").putInt("FRAGMENT",0).commit();
+
         } else if (id == R.id.nav_produits) {
             Produits frag =  new Produits();
             fragmentTransaction.replace(R.id.content_nav,frag);
 
             getSupportActionBar().setTitle("Produits");
-
+            pref.edit().clear().remove("FRAGMENT").putInt("FRAGMENT",1).commit();
         } else if (id == R.id.nav_listes) {
             Listes frag =  new Listes();
             fragmentTransaction.replace(R.id.content_nav,frag);
 
             getSupportActionBar().setTitle("Listes");
+            pref.edit().clear().remove("FRAGMENT").putInt("FRAGMENT",2).commit();
 
         }
 

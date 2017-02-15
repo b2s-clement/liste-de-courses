@@ -71,6 +71,7 @@ public class Magasins extends Fragment {
             }
         });
 
+        //Surchage du bouton fab de l'activité principale
         FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +79,6 @@ public class Magasins extends Fragment {
                 Intent addMag = new Intent(getActivity(), AjoutMagasin.class);
                 addMag.putExtra("requestCode", REQUEST_CODE_ADD);
                 startActivityForResult(addMag, REQUEST_CODE_ADD);
-                //Snackbar.make(findViewById(R.id.activity_magasin), "nb : "+Magasin.nbChecked(), Snackbar.LENGTH_LONG)
-                //       .setAction("Action", null).show();
             }
         });
 
